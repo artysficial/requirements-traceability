@@ -1,0 +1,30 @@
+{
+  "objectives": [
+    {"id": "BO-01", "title": "Pass the 2027 PCI PIN Security assessment with no major findings"},
+    {"id": "BO-02", "title": "Let digital channels use HSM services through one secure API instead of direct HSM links"},
+    {"id": "BO-03", "title": "Cut key-management incidents by 50 % through automation and auditability"}
+  ],
+  "business_requirements": [
+    {"id": "BR-01", "objective": "BO-02", "title": "Only authorised banking systems can use HSM services", "owner": "Head of Payments Technology"},
+    {"id": "BR-02", "objective": "BO-01", "title": "Cryptographic keys are protected and used only for their purpose", "owner": "CISO"},
+    {"id": "BR-03", "objective": "BO-02", "title": "Card payments can translate PINs and verify message integrity through the API", "owner": "Head of Card Operations"},
+    {"id": "BR-04", "objective": "BO-03", "title": "Every sensitive action is traceable for audit and investigation", "owner": "Head of Internal Audit"},
+    {"id": "BR-05", "objective": "BO-01", "title": "The service resists abuse, misuse and common attacks", "owner": "CISO"}
+  ],
+  "requirements": [
+    {"id": "REQ-HSM-01", "br": "BR-01", "type": "Security", "priority": "Must", "title": "Clients authenticate with OAuth 2.0 client credentials; tokens expire after 15 minutes"},
+    {"id": "REQ-HSM-02", "br": "BR-01", "type": "Security", "priority": "Must", "title": "Every endpoint except /health requires a valid, signed bearer token"},
+    {"id": "REQ-HSM-03", "br": "BR-01", "type": "Security", "priority": "Must", "title": "Scopes restrict each client to the operations its role needs"},
+    {"id": "REQ-HSM-04", "br": "BR-02", "type": "Security", "priority": "Must", "title": "A client can only see and use keys it owns"},
+    {"id": "REQ-HSM-05", "br": "BR-02", "type": "Security", "priority": "Must", "title": "Clear key material is never returned by any endpoint"},
+    {"id": "REQ-HSM-06", "br": "BR-02", "type": "Functional", "priority": "Must", "title": "Keys are bound to one usage (PIN, MAC, key encryption) and refused for any other"},
+    {"id": "REQ-HSM-07", "br": "BR-03", "type": "Functional", "priority": "Must", "title": "PIN translation supports ISO-0 and ISO-4 and validates PIN blocks"},
+    {"id": "REQ-HSM-08", "br": "BR-03", "type": "Functional", "priority": "Must", "title": "MAC generation and verification detect any change to the message"},
+    {"id": "REQ-HSM-09", "br": "BR-05", "type": "Security", "priority": "Must", "title": "Malformed or hostile input returns a 4xx without internal detail or reflected input"},
+    {"id": "REQ-HSM-10", "br": "BR-04", "type": "Compliance", "priority": "Must", "title": "Sensitive operations are audited without logging PINs, data or keys"},
+    {"id": "REQ-HSM-11", "br": "BR-05", "type": "Non-functional", "priority": "Should", "title": "Cryptographic endpoints are rate limited per client"},
+    {"id": "REQ-HSM-12", "br": "BR-05", "type": "Security", "priority": "Should", "title": "Ten failed authentications lock the client for 15 minutes"},
+    {"id": "REQ-HSM-13", "br": "BR-05", "type": "Security", "priority": "Should", "title": "Responses carry security headers (HSTS, nosniff, no-store, CSP) and no server banner"},
+    {"id": "REQ-HSM-14", "br": "BR-05", "type": "Non-functional", "priority": "Could", "title": "Request bodies larger than 16 KB are rejected"}
+  ]
+}

@@ -1,0 +1,845 @@
+{
+  "generated": "2026-10-31T16:29:47Z",
+  "duration": 2.66,
+  "counts": {
+    "passed": 57,
+    "known defect": 2
+  },
+  "tests": [
+    {
+      "id": "tests/test_audit.py::test_sensitive_operations_are_audited",
+      "title": "Key generation, PIN translation and MAC operations each leave an audit entry",
+      "module": "test_audit",
+      "status": "passed",
+      "duration": 0.051,
+      "requirements": [
+        "REQ-HSM-10"
+      ],
+      "category": "Audit logging",
+      "severity": "high",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_audit.py::test_audit_log_contains_no_pin_blocks_or_message_data",
+      "title": "PIN blocks and MAC input never appear in the audit log",
+      "module": "test_audit",
+      "status": "passed",
+      "duration": 0.025,
+      "requirements": [
+        "REQ-HSM-10"
+      ],
+      "category": "Audit logging",
+      "severity": "critical",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_audit.py::test_refused_operations_are_audited",
+      "title": "Key-usage violations are logged as refused",
+      "module": "test_audit",
+      "status": "passed",
+      "duration": 0.019,
+      "requirements": [
+        "REQ-HSM-06",
+        "REQ-HSM-10"
+      ],
+      "category": "Audit logging",
+      "severity": "medium",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_authentication.py::test_endpoints_require_a_token",
+      "title": "Protected endpoints refuse requests without a bearer token",
+      "module": "test_authentication",
+      "status": "passed",
+      "duration": 0.025,
+      "requirements": [
+        "REQ-HSM-02"
+      ],
+      "category": "API2 Broken authentication",
+      "severity": "critical",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_authentication.py::test_wrong_secret_and_unknown_client_get_the_same_answer",
+      "title": "Wrong secret and unknown client are indistinguishable (no client enumeration)",
+      "module": "test_authentication",
+      "status": "passed",
+      "duration": 0.013,
+      "requirements": [
+        "REQ-HSM-01"
+      ],
+      "category": "API2 Broken authentication",
+      "severity": "high",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_authentication.py::test_tokens_expire_after_fifteen_minutes",
+      "title": "Issued tokens are short-lived (15 minutes)",
+      "module": "test_authentication",
+      "status": "passed",
+      "duration": 0.007,
+      "requirements": [
+        "REQ-HSM-01"
+      ],
+      "category": "API2 Broken authentication",
+      "severity": "medium",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_authentication.py::test_expired_token_is_rejected",
+      "title": "An expired token is refused",
+      "module": "test_authentication",
+      "status": "passed",
+      "duration": 0.006,
+      "requirements": [
+        "REQ-HSM-01"
+      ],
+      "category": "API2 Broken authentication",
+      "severity": "high",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_authentication.py::test_tampered_token_cannot_escalate_scope",
+      "title": "Editing the token payload to add scopes breaks the signature",
+      "module": "test_authentication",
+      "status": "passed",
+      "duration": 0.006,
+      "requirements": [
+        "REQ-HSM-02",
+        "REQ-HSM-03"
+      ],
+      "category": "API2 Broken authentication",
+      "severity": "critical",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_authentication.py::test_alg_none_token_is_rejected",
+      "title": "Unsigned tokens (alg: none) are refused",
+      "module": "test_authentication",
+      "status": "passed",
+      "duration": 0.005,
+      "requirements": [
+        "REQ-HSM-02"
+      ],
+      "category": "API2 Broken authentication",
+      "severity": "critical",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_authentication.py::test_token_signed_with_another_key_is_rejected",
+      "title": "A token signed with a guessed key is refused",
+      "module": "test_authentication",
+      "status": "passed",
+      "duration": 0.005,
+      "requirements": [
+        "REQ-HSM-02"
+      ],
+      "category": "API2 Broken authentication",
+      "severity": "high",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_authentication.py::test_client_is_locked_after_repeated_failures",
+      "title": "Ten failed logins lock the client (brute-force protection)",
+      "module": "test_authentication",
+      "status": "known defect",
+      "duration": 0.053,
+      "requirements": [
+        "REQ-HSM-12"
+      ],
+      "category": "API2 Broken authentication",
+      "severity": "medium",
+      "defect": "HSM-SEC-001",
+      "reason": ""
+    },
+    {
+      "id": "tests/test_authorization.py::test_client_cannot_read_another_clients_key",
+      "title": "A client cannot read a key owned by another client",
+      "module": "test_authorization",
+      "status": "passed",
+      "duration": 0.017,
+      "requirements": [
+        "REQ-HSM-04"
+      ],
+      "category": "API1 BOLA",
+      "severity": "critical",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_authorization.py::test_foreign_and_missing_keys_look_identical",
+      "title": "Someone else's key and a non-existent key return the same response (no enumeration)",
+      "module": "test_authorization",
+      "status": "passed",
+      "duration": 0.012,
+      "requirements": [
+        "REQ-HSM-04"
+      ],
+      "category": "API1 BOLA",
+      "severity": "high",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_authorization.py::test_client_cannot_use_another_clients_key_for_crypto",
+      "title": "A client cannot MAC with a key it does not own",
+      "module": "test_authorization",
+      "status": "passed",
+      "duration": 0.009,
+      "requirements": [
+        "REQ-HSM-04"
+      ],
+      "category": "API1 BOLA",
+      "severity": "critical",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_authorization.py::test_scopes_limit_what_each_client_can_do[security-officer-POST-/v1/keys-body0]",
+      "title": "Clients are refused operations outside their scopes (least privilege)",
+      "module": "test_authorization",
+      "status": "passed",
+      "duration": 0.004,
+      "requirements": [
+        "REQ-HSM-03"
+      ],
+      "category": "API5 Function level authorization",
+      "severity": "high",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_authorization.py::test_scopes_limit_what_each_client_can_do[card-issuing-POST-/v1/pin/translate-body1]",
+      "title": "Clients are refused operations outside their scopes (least privilege)",
+      "module": "test_authorization",
+      "status": "passed",
+      "duration": 0.004,
+      "requirements": [
+        "REQ-HSM-03"
+      ],
+      "category": "API5 Function level authorization",
+      "severity": "high",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_authorization.py::test_scopes_limit_what_each_client_can_do[payments-switch-GET-/v1/audit-None]",
+      "title": "Clients are refused operations outside their scopes (least privilege)",
+      "module": "test_authorization",
+      "status": "passed",
+      "duration": 0.004,
+      "requirements": [
+        "REQ-HSM-03"
+      ],
+      "category": "API5 Function level authorization",
+      "severity": "high",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_authorization.py::test_scopes_limit_what_each_client_can_do[card-issuing-GET-/v1/audit-None]",
+      "title": "Clients are refused operations outside their scopes (least privilege)",
+      "module": "test_authorization",
+      "status": "passed",
+      "duration": 0.003,
+      "requirements": [
+        "REQ-HSM-03"
+      ],
+      "category": "API5 Function level authorization",
+      "severity": "high",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_authorization.py::test_security_officer_can_read_the_audit_log",
+      "title": "The security officer role can read the audit log",
+      "module": "test_authorization",
+      "status": "passed",
+      "duration": 0.004,
+      "requirements": [
+        "REQ-HSM-03",
+        "REQ-HSM-10"
+      ],
+      "category": "API5 Function level authorization",
+      "severity": "medium",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_crypto_controls.py::test_mac_key_cannot_translate_pins",
+      "title": "A MAC key (TAK) is refused for PIN translation",
+      "module": "test_crypto_controls",
+      "status": "passed",
+      "duration": 0.012,
+      "requirements": [
+        "REQ-HSM-06"
+      ],
+      "category": "Cryptographic controls",
+      "severity": "critical",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_crypto_controls.py::test_non_mac_keys_cannot_generate_macs[ZPK]",
+      "title": "PIN and key-encryption keys are refused for MAC generation",
+      "module": "test_crypto_controls",
+      "status": "passed",
+      "duration": 0.008,
+      "requirements": [
+        "REQ-HSM-06"
+      ],
+      "category": "Cryptographic controls",
+      "severity": "critical",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_crypto_controls.py::test_non_mac_keys_cannot_generate_macs[ZMK]",
+      "title": "PIN and key-encryption keys are refused for MAC generation",
+      "module": "test_crypto_controls",
+      "status": "passed",
+      "duration": 0.008,
+      "requirements": [
+        "REQ-HSM-06"
+      ],
+      "category": "Cryptographic controls",
+      "severity": "critical",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_crypto_controls.py::test_pin_translation_is_deterministic_and_changes_the_block[ISO-0-0412AC89EF5B3D7A]",
+      "title": "PIN translation returns a same-length block under the destination key, consistently",
+      "module": "test_crypto_controls",
+      "status": "passed",
+      "duration": 0.017,
+      "requirements": [
+        "REQ-HSM-07"
+      ],
+      "category": "Cryptographic controls",
+      "severity": "high",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_crypto_controls.py::test_pin_translation_is_deterministic_and_changes_the_block[ISO-4-4412345FFFFFFFFF0123456789ABCDEF]",
+      "title": "PIN translation returns a same-length block under the destination key, consistently",
+      "module": "test_crypto_controls",
+      "status": "passed",
+      "duration": 0.019,
+      "requirements": [
+        "REQ-HSM-07"
+      ],
+      "category": "Cryptographic controls",
+      "severity": "high",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_crypto_controls.py::test_malformed_pin_blocks_are_rejected[ISO-0-0412AC89EF5B3D7]",
+      "title": "PIN blocks of the wrong length or with non-hex characters are rejected",
+      "module": "test_crypto_controls",
+      "status": "passed",
+      "duration": 0.012,
+      "requirements": [
+        "REQ-HSM-07",
+        "REQ-HSM-09"
+      ],
+      "category": "Cryptographic controls",
+      "severity": "high",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_crypto_controls.py::test_malformed_pin_blocks_are_rejected[ISO-0-0412AC89EF5B3D7Z]",
+      "title": "PIN blocks of the wrong length or with non-hex characters are rejected",
+      "module": "test_crypto_controls",
+      "status": "passed",
+      "duration": 0.013,
+      "requirements": [
+        "REQ-HSM-07",
+        "REQ-HSM-09"
+      ],
+      "category": "Cryptographic controls",
+      "severity": "high",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_crypto_controls.py::test_malformed_pin_blocks_are_rejected[ISO-4-0412AC89EF5B3D7A]",
+      "title": "PIN blocks of the wrong length or with non-hex characters are rejected",
+      "module": "test_crypto_controls",
+      "status": "passed",
+      "duration": 0.014,
+      "requirements": [
+        "REQ-HSM-07",
+        "REQ-HSM-09"
+      ],
+      "category": "Cryptographic controls",
+      "severity": "high",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_crypto_controls.py::test_mac_detects_tampered_data",
+      "title": "A MAC verifies for the original message and fails when one byte changes",
+      "module": "test_crypto_controls",
+      "status": "passed",
+      "duration": 0.015,
+      "requirements": [
+        "REQ-HSM-08"
+      ],
+      "category": "Cryptographic controls",
+      "severity": "critical",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_crypto_controls.py::test_mac_from_another_key_does_not_verify",
+      "title": "A MAC made with one key does not verify under another",
+      "module": "test_crypto_controls",
+      "status": "passed",
+      "duration": 0.015,
+      "requirements": [
+        "REQ-HSM-08"
+      ],
+      "category": "Cryptographic controls",
+      "severity": "high",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_data_exposure.py::test_clear_key_material_is_never_returned[ZPK]",
+      "title": "Key responses contain metadata and a wrapped key block only, never clear key material",
+      "module": "test_data_exposure",
+      "status": "passed",
+      "duration": 0.007,
+      "requirements": [
+        "REQ-HSM-05"
+      ],
+      "category": "API3 Property level authorization",
+      "severity": "critical",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_data_exposure.py::test_clear_key_material_is_never_returned[PVK]",
+      "title": "Key responses contain metadata and a wrapped key block only, never clear key material",
+      "module": "test_data_exposure",
+      "status": "passed",
+      "duration": 0.008,
+      "requirements": [
+        "REQ-HSM-05"
+      ],
+      "category": "API3 Property level authorization",
+      "severity": "critical",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_data_exposure.py::test_clear_key_material_is_never_returned[TAK]",
+      "title": "Key responses contain metadata and a wrapped key block only, never clear key material",
+      "module": "test_data_exposure",
+      "status": "passed",
+      "duration": 0.008,
+      "requirements": [
+        "REQ-HSM-05"
+      ],
+      "category": "API3 Property level authorization",
+      "severity": "critical",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_data_exposure.py::test_clear_key_material_is_never_returned[ZMK]",
+      "title": "Key responses contain metadata and a wrapped key block only, never clear key material",
+      "module": "test_data_exposure",
+      "status": "passed",
+      "duration": 0.007,
+      "requirements": [
+        "REQ-HSM-05"
+      ],
+      "category": "API3 Property level authorization",
+      "severity": "critical",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_data_exposure.py::test_protected_properties_cannot_be_mass_assigned[extra0]",
+      "title": "Owner, usage and exportability cannot be set by the caller",
+      "module": "test_data_exposure",
+      "status": "passed",
+      "duration": 0.005,
+      "requirements": [
+        "REQ-HSM-04",
+        "REQ-HSM-06"
+      ],
+      "category": "API3 Property level authorization",
+      "severity": "high",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_data_exposure.py::test_protected_properties_cannot_be_mass_assigned[extra1]",
+      "title": "Owner, usage and exportability cannot be set by the caller",
+      "module": "test_data_exposure",
+      "status": "passed",
+      "duration": 0.004,
+      "requirements": [
+        "REQ-HSM-04",
+        "REQ-HSM-06"
+      ],
+      "category": "API3 Property level authorization",
+      "severity": "high",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_data_exposure.py::test_protected_properties_cannot_be_mass_assigned[extra2]",
+      "title": "Owner, usage and exportability cannot be set by the caller",
+      "module": "test_data_exposure",
+      "status": "passed",
+      "duration": 0.005,
+      "requirements": [
+        "REQ-HSM-04",
+        "REQ-HSM-06"
+      ],
+      "category": "API3 Property level authorization",
+      "severity": "high",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_data_exposure.py::test_key_check_value_is_six_hex_characters",
+      "title": "The key check value (KCV) is 6 hex characters, enough to verify a key without exposing it",
+      "module": "test_data_exposure",
+      "status": "passed",
+      "duration": 0.004,
+      "requirements": [
+        "REQ-HSM-05"
+      ],
+      "category": "API3 Property level authorization",
+      "severity": "medium",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_input_validation.py::test_hostile_key_ids_are_rejected_quietly[' OR '1'='1]",
+      "title": "Injection and traversal payloads in a key id return a plain 404",
+      "module": "test_input_validation",
+      "status": "passed",
+      "duration": 0.004,
+      "requirements": [
+        "REQ-HSM-09"
+      ],
+      "category": "Injection & error handling",
+      "severity": "high",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_input_validation.py::test_hostile_key_ids_are_rejected_quietly[key_1; DROP TABLE keys--]",
+      "title": "Injection and traversal payloads in a key id return a plain 404",
+      "module": "test_input_validation",
+      "status": "passed",
+      "duration": 0.004,
+      "requirements": [
+        "REQ-HSM-09"
+      ],
+      "category": "Injection & error handling",
+      "severity": "high",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_input_validation.py::test_hostile_key_ids_are_rejected_quietly[../../etc/passwd]",
+      "title": "Injection and traversal payloads in a key id return a plain 404",
+      "module": "test_input_validation",
+      "status": "passed",
+      "duration": 0.003,
+      "requirements": [
+        "REQ-HSM-09"
+      ],
+      "category": "Injection & error handling",
+      "severity": "high",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_input_validation.py::test_hostile_key_ids_are_rejected_quietly[%2e%2e%2fadmin]",
+      "title": "Injection and traversal payloads in a key id return a plain 404",
+      "module": "test_input_validation",
+      "status": "passed",
+      "duration": 0.002,
+      "requirements": [
+        "REQ-HSM-09"
+      ],
+      "category": "Injection & error handling",
+      "severity": "high",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_input_validation.py::test_hostile_key_ids_are_rejected_quietly[<script>alert(1)</script>]",
+      "title": "Injection and traversal payloads in a key id return a plain 404",
+      "module": "test_input_validation",
+      "status": "passed",
+      "duration": 0.003,
+      "requirements": [
+        "REQ-HSM-09"
+      ],
+      "category": "Injection & error handling",
+      "severity": "high",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_input_validation.py::test_hostile_key_ids_are_rejected_quietly[${jndi:ldap://x/a}]",
+      "title": "Injection and traversal payloads in a key id return a plain 404",
+      "module": "test_input_validation",
+      "status": "passed",
+      "duration": 0.003,
+      "requirements": [
+        "REQ-HSM-09"
+      ],
+      "category": "Injection & error handling",
+      "severity": "high",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_input_validation.py::test_hostile_labels_are_rejected_and_not_reflected[' OR '1'='1]",
+      "title": "Hostile key labels fail validation and are not echoed back",
+      "module": "test_input_validation",
+      "status": "passed",
+      "duration": 0.004,
+      "requirements": [
+        "REQ-HSM-09"
+      ],
+      "category": "Injection & error handling",
+      "severity": "medium",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_input_validation.py::test_hostile_labels_are_rejected_and_not_reflected[key_1; DROP TABLE keys--]",
+      "title": "Hostile key labels fail validation and are not echoed back",
+      "module": "test_input_validation",
+      "status": "passed",
+      "duration": 0.005,
+      "requirements": [
+        "REQ-HSM-09"
+      ],
+      "category": "Injection & error handling",
+      "severity": "medium",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_input_validation.py::test_hostile_labels_are_rejected_and_not_reflected[../../etc/passwd]",
+      "title": "Hostile key labels fail validation and are not echoed back",
+      "module": "test_input_validation",
+      "status": "passed",
+      "duration": 0.006,
+      "requirements": [
+        "REQ-HSM-09"
+      ],
+      "category": "Injection & error handling",
+      "severity": "medium",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_input_validation.py::test_hostile_labels_are_rejected_and_not_reflected[%2e%2e%2fadmin]",
+      "title": "Hostile key labels fail validation and are not echoed back",
+      "module": "test_input_validation",
+      "status": "passed",
+      "duration": 0.006,
+      "requirements": [
+        "REQ-HSM-09"
+      ],
+      "category": "Injection & error handling",
+      "severity": "medium",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_input_validation.py::test_hostile_labels_are_rejected_and_not_reflected[<script>alert(1)</script>]",
+      "title": "Hostile key labels fail validation and are not echoed back",
+      "module": "test_input_validation",
+      "status": "passed",
+      "duration": 0.008,
+      "requirements": [
+        "REQ-HSM-09"
+      ],
+      "category": "Injection & error handling",
+      "severity": "medium",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_input_validation.py::test_hostile_labels_are_rejected_and_not_reflected[${jndi:ldap://x/a}]",
+      "title": "Hostile key labels fail validation and are not echoed back",
+      "module": "test_input_validation",
+      "status": "passed",
+      "duration": 0.007,
+      "requirements": [
+        "REQ-HSM-09"
+      ],
+      "category": "Injection & error handling",
+      "severity": "medium",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_input_validation.py::test_malformed_json_gets_a_generic_error",
+      "title": "Broken JSON returns a structured 4xx without stack traces",
+      "module": "test_input_validation",
+      "status": "passed",
+      "duration": 0.006,
+      "requirements": [
+        "REQ-HSM-09"
+      ],
+      "category": "Injection & error handling",
+      "severity": "medium",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_input_validation.py::test_non_hex_mac_data_is_rejected",
+      "title": "MAC input must be hex; anything else is refused",
+      "module": "test_input_validation",
+      "status": "passed",
+      "duration": 0.013,
+      "requirements": [
+        "REQ-HSM-09"
+      ],
+      "category": "Injection & error handling",
+      "severity": "medium",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_misconfiguration.py::test_security_headers_are_set[x-content-type-options-nosniff]",
+      "title": "Responses carry nosniff and no-store headers",
+      "module": "test_misconfiguration",
+      "status": "passed",
+      "duration": 0.004,
+      "requirements": [
+        "REQ-HSM-13"
+      ],
+      "category": "API8 Security misconfiguration",
+      "severity": "medium",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_misconfiguration.py::test_security_headers_are_set[cache-control-no-store]",
+      "title": "Responses carry nosniff and no-store headers",
+      "module": "test_misconfiguration",
+      "status": "passed",
+      "duration": 0.004,
+      "requirements": [
+        "REQ-HSM-13"
+      ],
+      "category": "API8 Security misconfiguration",
+      "severity": "medium",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_misconfiguration.py::test_content_security_policy_is_locked_down",
+      "title": "A restrictive Content-Security-Policy is sent",
+      "module": "test_misconfiguration",
+      "status": "passed",
+      "duration": 0.003,
+      "requirements": [
+        "REQ-HSM-13"
+      ],
+      "category": "API8 Security misconfiguration",
+      "severity": "low",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_misconfiguration.py::test_server_software_is_not_advertised",
+      "title": "The server does not advertise its software or version",
+      "module": "test_misconfiguration",
+      "status": "passed",
+      "duration": 0.003,
+      "requirements": [
+        "REQ-HSM-13"
+      ],
+      "category": "API8 Security misconfiguration",
+      "severity": "low",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_misconfiguration.py::test_cors_does_not_allow_any_origin",
+      "title": "Cross-origin requests from arbitrary sites are not allowed",
+      "module": "test_misconfiguration",
+      "status": "passed",
+      "duration": 0.003,
+      "requirements": [
+        "REQ-HSM-13"
+      ],
+      "category": "API8 Security misconfiguration",
+      "severity": "high",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_misconfiguration.py::test_hsts_is_enforced",
+      "title": "Strict-Transport-Security is sent so clients never fall back to HTTP",
+      "module": "test_misconfiguration",
+      "status": "known defect",
+      "duration": 0.004,
+      "requirements": [
+        "REQ-HSM-13"
+      ],
+      "category": "API8 Security misconfiguration",
+      "severity": "low",
+      "defect": "HSM-SEC-002",
+      "reason": ""
+    },
+    {
+      "id": "tests/test_resource_limits.py::test_cryptographic_calls_are_rate_limited",
+      "title": "MAC generation is throttled once the per-minute limit is reached",
+      "module": "test_resource_limits",
+      "status": "passed",
+      "duration": 0.115,
+      "requirements": [
+        "REQ-HSM-11"
+      ],
+      "category": "API4 Resource consumption",
+      "severity": "high",
+      "defect": null,
+      "reason": ""
+    },
+    {
+      "id": "tests/test_resource_limits.py::test_oversized_bodies_are_rejected",
+      "title": "Request bodies over 16 KB are refused with 413",
+      "module": "test_resource_limits",
+      "status": "passed",
+      "duration": 0.002,
+      "requirements": [
+        "REQ-HSM-14"
+      ],
+      "category": "API4 Resource consumption",
+      "severity": "medium",
+      "defect": null,
+      "reason": ""
+    }
+  ]
+}

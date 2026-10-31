@@ -1,0 +1,4 @@
+[
+  {"id": "HSM-SEC-001", "requirement": "REQ-HSM-12", "severity": "Medium", "title": "No lockout after repeated failed client authentication", "status": "Open", "story": "US-10"},
+  {"id": "HSM-SEC-002", "requirement": "REQ-HSM-13", "severity": "Low", "title": "Strict-Transport-Security header missing", "status": "Open", "story": "US-11"}
+]
