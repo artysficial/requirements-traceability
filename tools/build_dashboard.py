@@ -79,11 +79,18 @@ def main() -> None:
 
     failing = [t.req["id"] for t in traces if t.status == "Failing"]
     verdict = (f"{verified}/{total} requirements verified · {', '.join(failing)} awaiting defect fixes", "warn") if failing else ("All requirements verified", "ok")
+    takeaways = [
+        f"{verified} of {total} requirements ({verified / total:.0%}) are proven by passing automated tests, pulled live from the security test suite.",
+        f"Every requirement is traced to a business objective; {covered / total:.0%} have user stories and {tested / total:.0%} have automated tests.",
+        (f"{len(failing)} requirement{'s are' if len(failing) != 1 else ' is'} not yet met ({', '.join(failing)}): defects are logged and the requirements will turn green when the fixes pass."
+         if failing else "No requirement is blocked by an open defect."),
+        f"Delivery: {done_points} of {all_points} story points ({done_points / all_points:.0%}) are done.",
+    ]
     rk.write(str(ROOT / "site" / "index.html"), rk.page(
         title="Requirements Traceability",
         eyebrow="IT Business Analyst · BRD to evidence",
         summary="The programme's Business Requirement Document traced end to end: objectives, business requirements, user stories with Gherkin acceptance criteria, live automated test results and defects.",
-        body=body, repo="requirements-traceability", verdict=verdict,
+        body=body, repo="requirements-traceability", verdict=verdict, takeaways=takeaways,
     ))
     print(f"dashboard built ({source} results): {verified}/{total} verified")
 
